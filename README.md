@@ -22,7 +22,7 @@ The goals / steps of this project are the following:
 
 ## Rubric Points
 
-You're reading it! and here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
+You're reading it! and here is a link to my [project code](https://github.com/morgengc/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
 
 ### Data Set Summary & Exploration
 
@@ -97,9 +97,9 @@ The first hyperparameter be tuned is `rate`. I tested 0.001, 0.0015, 0.002, 0.00
 After that, I changed `EPOCHS`, using 10, 15, 16, 17 and 20. I found in most case, `EPOCHS` should not exceed 15, otherwise the model will be overfitted.
 
 My final model results were:
-* training set accuracy of 0.988
-* validation set accuracy of 0.930 
-* test set accuracy of 0.916
+* training set accuracy of 0.992
+* validation set accuracy of 0.937
+* test set accuracy of 0.924
 
 Since I choosed a well known model called LeNet, I should answer these following questions:
 
@@ -114,13 +114,13 @@ Since I choosed a well known model called LeNet, I should answer these following
 ### Test a Model on New Images
 
 #### 1. Choose five German traffic signs found on the web
-Well, I choosed five German traffic signs from test datasets. It's orignal format is *.ppm, so I changed them to *.jpg, and resize all these images to 32x32.
+Well, I choosed five traffic signs below, I changed them to *.jpg, and resize all these images to 32x32.
 
 Here are these images:
 
 ![alt text][5images]
 
-The forth image might be difficult to classify because there are a lot of noise.
+The forth image might be difficult to classify because it's not in the 43 classes. 
 
 #### 2. Discuss the model's predictions on these new traffic signs
 
@@ -128,28 +128,68 @@ Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Vehicles over 3.5 metric tons prohibited | Vehicles over 3.5 metric tons prohibited | 
-| Speed limit (30km/h)| Speed limit (30km/h)|
+| Speed limit (60km/h) | Speed limit (60km/h) | 
 | Keep right | Keep right |
-| Turn right ahead| Turn right ahead |
-| Right-of-way at the next intersection | Right-of-way at the next intersection |
+| Vehicles over 3.5 metric tons prohibited | Vehicles over 3.5 metric tons prohibited |
+| Speed limit (40km/h) | Speed limit (60km/h) |
+| Slippery road | Road work |
 
-Luckily, the model was able to correctly guess all of the 5 traffic signs, which gives an accuracy of 100%. This compares favorably to the accuracy on the test set of 91.6%.
+The accurancy of new images is 60%, this compares favorably to the accuracy on the test set of 91.6%. 
+
+Since I choose the first three signs from a German traffic document, they were very standard traffic signs, and were well recongnized. And the latter two signs were downloaded from Internet, the 40km/h speed limit sign is not contained in the 43 known classes, so I can not identify it. The last one seems to be a slippery road, but is a little different from standard slippery road sign, the model traited it as a road work sign.
 
 #### 3. How certain the model is
 
 The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
 
-For the first image, the model is relatively sure that this is a prohibited sign (probability of 0.99), and the image does contain a prohibited sign. The top five soft max probabilities were
+For the first image, the model is relatively sure that this is a speed limit sign (probability of 0.98). The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .99         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+| .98         			| Speed limit (60km/h)                          | 
+| .01     				| Speed limit (50km/h)                          |
+| .00					| Speed limit (80km/h)                          |
+| .00	      			| Stop                                          |
+| .00				    | Speed limit (30km/h)                          |
 
 
-For the second image ... 
+For the second image is similar to the first one, the model is relatively sure that this is a keep right sign (probability of 0.99). The top five soft max probabilities were
 
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| .99         			| Keep right                                    | 
+| .00     				| Dangerous curve to the right                  |
+| .00					| General caution                               |
+| .00	      			| Roundabout mandatory                          |
+| .00				    | Road work                                     |
+
+The third image is similar to the two above. The model is relatively sure that this is a prohibited sign (probability of 0.99). The top five soft max probabilities were
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| .99         			| Vehicles over 3.5 metric tons prohibited      | 
+| .00     				| No passing                                    |
+| .00					| Speed limit (100km/h)                         |
+| .00	      			| End of all speed and passing limits           |
+| .00				    | End of no passing by vehicles over 3.5 metric tons |
+
+The forth image is a 40km/h speed limit sign, which is not contained in the known 43 classes. The top five soft max probabilities were
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| .57         			| Speed limit (60km/h)                          | 
+| .43     				| Speed limit (80km/h)                          |
+| .00					| Ahead only                                    |
+| .00	      			| No vehicles                                   |
+| .00				    | Speed limit (50km/h)                          |
+
+The last image is a slippery road, but is a little different from standard slippery road sign, and the model traited it as a road work sign. The top five soft max probabilities were
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| .39         			| Road work                                     | 
+| .27     				| Bumpy road                                    |
+| .20					| Traffic signals                               |
+| .07	      			| Dangerous curve to the right                  |
+| .02				    | General caution                               |
