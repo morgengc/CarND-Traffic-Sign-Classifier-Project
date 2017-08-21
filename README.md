@@ -2,7 +2,7 @@
 
 ---
 
-## Build a Traffic Sign Recognition Project**
+## Build a Traffic Sign Recognition Project
 
 The goals / steps of this project are the following:
 * Load the data set (see below for links to the project data set)
@@ -58,7 +58,7 @@ def rgb2gray(rgb):
 ```
 Here is an example of a traffic sign image before and after grayscaling.
 
-![alt text][color] ![alt text][gray]
+![alt text][orig] ![alt text][gray]
 
 Then I normalized the image data using the algorithm below, to make the data share a mean zero and equal variance.
 ```
