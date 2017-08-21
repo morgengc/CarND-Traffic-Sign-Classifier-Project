@@ -1,7 +1,5 @@
 # Traffic Sign Recognition
 
----
-
 ## Build a Traffic Sign Recognition Project
 
 The goals / steps of this project are the following:
@@ -87,8 +85,6 @@ Layers description as below:
 
 #### 3. Train the model
 
-. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
-
 To train the model, I used many hyperparameters, including `EPOCHS = 15`, `BATCH_SIZE = 128`, `rate = 0.002`, and these paramters lead a best result.
 
 #### 4. Hyperparameter tuning
@@ -120,7 +116,7 @@ Here are these images:
 
 ![alt text][5images]
 
-The forth image might be difficult to classify because it's not in the 43 classes. 
+The forth image might be difficult to classify because it's not in the 43 classes. The fifth image might be also difficult to classify because it's not a standard slippery sign(Maybe not a German traffic sign).
 
 #### 2. Discuss the model's predictions on these new traffic signs
 
@@ -134,9 +130,9 @@ Here are the results of the prediction:
 | Speed limit (40km/h) | Speed limit (60km/h) |
 | Slippery road | Road work |
 
-The accurancy of new images is 60%, this compares favorably to the accuracy on the test set of 91.6%. 
+The accurancy of new images is 60%, this compares favorably to the accuracy on the test set of 92.4%. 
 
-Since I choose the first three signs from a German traffic document, they were very standard traffic signs, and were well recongnized. And the latter two signs were downloaded from Internet, the 40km/h speed limit sign is not contained in the 43 known classes, so I can not identify it. The last one seems to be a slippery road, but is a little different from standard slippery road sign, the model traited it as a road work sign.
+Since I choose the first three signs from a German traffic document, they were very standard traffic signs, and were well recongnized. And the latter two signs were downloaded from Internet, the 40km/h speed limit sign is not contained in the 43 known classes, so the model can not identify it. The last one seems to be a slippery road, but is a little different from standard slippery road sign, the model traited it as a road work sign.
 
 #### 3. How certain the model is
 
